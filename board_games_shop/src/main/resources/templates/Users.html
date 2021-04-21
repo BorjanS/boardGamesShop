@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" crossorigin="anonymous" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ==" crossorigin="anonymous"></script>
+    <title>Users</title>
+
+    <style>
+        .background {
+            width: 100%;
+            height: 155px;
+            position: relative;
+            background: -webkit-linear-gradient(top, rgb(7,39,46) 0%,rgb(21 51 58) 53%,rgb(7,39,46) 100%); /* Chrome10+,Safari5.1+ */
+            background-size: 100% 100%;
+        }
+
+        .clouds {
+            width: 100px;
+            height: 115px;
+            position: absolute;
+            margin-top: 40px!important;
+        }
+
+        .cloud1 {
+            top: 0;
+            z-index: 100;
+            fill: lightpink;
+            /* Animation shorthand syntax order: name, duration, timing-function, delay, iteration-count, direction, fill-mode */
+            -webkit-animation: cloud1 linear 20s infinite alternate;
+            -moz-animation: cloud1 20s linear infinite alternate-reverse;
+            -o-animation: cloud1 20s linear  infinite alternate-reverse;
+            animation: cloud1 20s linear infinite alternate-reverse;
+        }
+
+        .cloud2 {
+            top: 0;
+            right:0;
+            z-index: 200;
+            fill: lightpink;
+            -webkit-animation: cloud2 linear 0s infinite alternate-reverse;
+            -moz-animation: cloud2 20s linear  infinite alternate-reverse;
+            -o-animation: cloud2 20s linear  infinite alternate-reverse;
+            animation: cloud2 20s linear infinite alternate-reverse;
+        }
+
+        @keyframes cloud1 {
+            0%   { left: 150px; top: 0px;}
+            50%  { left: 25%; top: 0px;}
+            100%   { left: 150px; top: 0px;}
+
+
+        }
+
+        @keyframes cloud2 {
+            0%   { right: 150px; top: 0px;}
+            50%  { right: 25%; top: 0px;}
+            100%  { right: 150px; top: 0px;}
+
+
+        }
+        @media only screen and (max-width: 430px) {
+            clouds {
+                display: none;
+            }
+        }
+
+        .top-bar-menu-font-left{
+            color: #25bdb8;
+            float:left;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .top-bar-menu-font-right{
+            color: #25bdb8;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4" th:each="user : ${users}">
+            <p th:text="${user.getRole()}"></p>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
